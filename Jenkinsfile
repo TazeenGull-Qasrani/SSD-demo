@@ -18,12 +18,6 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            echo 'Pipeline completed'
-        }
-    }
     stage('Test') {
         when {
             expression { return true }
@@ -32,5 +26,12 @@ pipeline {
             echo 'Testing..'
         }
     }
+
+    post {
+        always {
+            echo 'Pipeline completed'
+        }
+    }
+  
 
 }
