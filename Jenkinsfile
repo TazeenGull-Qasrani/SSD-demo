@@ -9,6 +9,10 @@ pipeline {
         VERSION = '1.0'
     }
 
+    parameters {
+        booleanParam(name: 'executeTests', defaultValue: true)
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -19,6 +23,9 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+                expression { params.executeTests }
+            }
             steps {
                 echo 'Testing..'
             }
