@@ -24,4 +24,13 @@ pipeline {
             echo 'Pipeline completed'
         }
     }
+    stage('Test') {
+        when {
+            expression { return true }
+        }
+        steps {
+            echo 'Testing..'
+        }
+    }
+
 }
