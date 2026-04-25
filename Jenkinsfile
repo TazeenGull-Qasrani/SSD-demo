@@ -18,15 +18,20 @@ pipeline {
             }
         }
     }
-    stage('Test') {
-        when {
-            expression { return true }
-        }
-        steps {
-            echo 'Testing..'
-        }
+
+    agent any
+
+    environment {
+        VERSION = '1.0'
     }
 
+    stages {
+        stage('Build') {
+            steps {
+                echo "Version is ${VERSION}"
+            }
+        }
+    }
     post {
         always {
             echo 'Pipeline completed'
