@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+    }
+
     environment {
         VERSION = '1.0'
     }
@@ -10,6 +14,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 echo "Version is ${VERSION}"
+                bat 'mvn -v'
             }
         }
 
